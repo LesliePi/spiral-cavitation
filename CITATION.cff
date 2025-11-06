@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "Logarithmic Spiral and Cavitation Modeling"
+authors:
+  - family-names: Tatai
+    given-names: 
+    name: Laszlo
+    affiliation: "Independent researcher, Rábagyarmat, Hungary"
+    orcid: "https://orcid.org/0000-0000-0000-0000"  # Add your ORCID if available
+date-released: 2025-11-06
+version: 1.0.0
+repository-code: https://github.com/laszlo/spiral-cavitation
+license: MIT AND CC-BY-4.0
+keywords:
+  - cavitation
+  - spiral geometry
+  - Rayleigh–Plesset
+  - fluid dynamics
+  - Python simulation
+  - machine learning
+  - optimization
+  - CFD
+  - Jupyter Notebook
+abstract: >
+  This repository provides a complete, reproducible framework for modeling cavitation dynamics along logarithmic spiral trajectories. It includes mathematical foundations, physical modeling, numerical simulation, parameter optimization, and machine learning acceleration. The project is designed for open scientific dissemination and integration with CFD and experimental validation workflows.
