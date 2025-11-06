@@ -1,0 +1,77 @@
+# Spiral Cavitation Simulation
+
+This notebook simulates cavitation dynamics along a logarithmic spiral trajectory using physical models and numerical integration. It includes:
+
+- Spiral geometry and velocity field
+- Cavitation threshold calculation
+- Rayleigh–Plesset bubble dynamics
+- Visualization of critical conditions
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+from dataclasses import dataclass
+@dataclass
+class PhysicalParameters:
+    ρ: float = 998.0
+    p_0: float = 101325.0
+    p_vap: float = 2339.0
+    σ: float = 0.0728
+    μ: float = 0.001
+    r_0: float = 0.01
+    α: float = np.radians(20)
+    ω: float = 500.0
+    R_0: float = 1e-6
+    R_dot_0: float = 0.0
+def logarithmic_spiral(params, t):
+    k = 1 / np.tan(params.α)
+    θ = params.ω * t
+    r = params.r_0 * np.exp(k * θ)
+    return r, k
+
+def spiral_velocity(params, r, k):
+    v_r = k * params.ω * r
+    v_θ = params.ω * r
+    v_total = np.sqrt(v_r**2 + v_θ**2)
+    return v_r, v_θ, v_total
+def critical_conditions(params):
+    Δp = params.p_0 - params.p_vap
+    r, k = logarithmic_spiral(params, 0)
+    ω_c = (1/(k * r)) * np.sqrt(2 * Δp / (params.ρ * (1 + k**2)))
+    r_crit = (1/(params.ω * np.sqrt(1 + k**2))) * np.sqrt(2 * Δp / params.ρ)
+    t_crit = (1/(k * params.ω)) * np.log(r_crit / params.r_0)
+    return ω_c, r_crit, t_crit, k
+def external_pressure_spiral(t, params, k):
+    r, _ = logarithmic_spiral(params, t)
+    v_total = spiral_velocity(params, r, k)[2]
+    return params.p_0 - 0.5 * params.ρ * v_total**2
+
+def rayleigh_plesset(t, y, params, external_pressure_func):
+    R, R_dot = y
+    p_inf = external_pressure_func(t)
+    p_g = params.p_vap
+    R_dotdot = ((p_g + params.p_vap - p_inf - 2*params.σ/R - 4*params.μ*R_dot/R)
+                / (params.ρ * R) - 1.5 * R_dot**2 / R)
+    return [R_dot, R_dotdot]
+def run_complete_simulation(params, t_max=0.1, n_points=1000):
+    t_eval = np.linspace(0, t_max, n_points)
+    ω_c, r_crit, t_crit, k = critical_conditions(params)
+    external_pressure = lambda t: external_pressure_spiral(t, params, k)
+    sol = solve_ivp(rayleigh_plesset, [0, t_max], [params.R_0, params.R_dot_0],
+                    args=(params, external_pressure), t_eval=t_eval, method='RK45', rtol=1e-8)
+    return t_eval, sol, ω_c, r_crit, t_crit
+
+params = PhysicalParameters()
+t, sol, ω_c, r_crit, t_crit = run_complete_simulation(params)
+
+plt.figure(figsize=(10, 5))
+plt.plot(t, sol.y[0], label='Bubble radius R(t)')
+plt.xlabel('Time [s]')
+plt.ylabel('Radius [m]')
+plt.title('Rayleigh–Plesset Bubble Dynamics')
+plt.grid(True)
+plt.legend()
+plt.show()
+
+print(f"Critical angular velocity ω_c: {ω_c:.2f} rad/s")
+print(f"Critical radius r_crit: {r_crit:.4f} m")
+print(f"Critical time t_crit: {t_crit:.4f} s")
