@@ -37,3 +37,8 @@ def spiral_velocity_components(params: SpiralParameters, r: float) -> tuple:
     v_θ = params.ω * r
     v_total = np.sqrt(v_r**2 + v_θ**2)
     return v_r, v_θ, v_total
+from src.geometry import SpiralParameters, spiral_radius_time, spiral_velocity_components
+
+params = SpiralParameters(r_0=0.01, α=np.radians(20), ω=500)
+r = spiral_radius_time(params, t=0.05)
+v_r, v_θ, v_total = spiral_velocity_components(params, r)
