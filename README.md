@@ -42,5 +42,5 @@ If you use this work, please cite it using the `CITATION.cff` file or Zenodo DOI
 
 ## Author
 
-Laszlo – Independent researcher and system architect  
+Laszlo Tatai – Independent researcher and system architect  
 Rábagyarmat, Hungary
