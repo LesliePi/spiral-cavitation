@@ -1,0 +1,143 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, graphicx, geometry}
+\usepackage{hyperref}
+\geometry{margin=2.5cm}
+\title{Logarithmic Spiral and Cavitation Modeling}
+\author{Laszlo}
+\date{November 2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Introduction and Motivation}
+Volute geometries in centrifugal pumps, turbines, and propellers often follow a logarithmic spiral. Cavitation causes erosion, noise, and efficiency loss. This paper presents a reproducible model that:
+\begin{itemize}
+    \item Describes flow and cavitation dynamics along spiral trajectories
+    \item Defines cavitation-free operating windows
+    \item Optimizes spiral geometry for CAD/CFD integration
+    \item Provides a Python-based simulation framework
+\end{itemize}
+
+\section{Spiral Geometry and Kinematics}
+\subsection{Logarithmic Spiral}
+
+
+\[
+r(\theta) = r_0 e^{k\theta}, \quad r(t) = r_0 e^{k\omega t}, \quad k = \cot(\alpha)
+\]
+
+
+
+\subsection{Velocity Components}
+
+
+\[
+v_r = k\omega r, \quad v_\theta = \omega r, \quad v = \omega r \sqrt{1 + k^2}
+\]
+
+
+
+\section{Cavitation Threshold and Criteria}
+\subsection{Bernoulli Equation}
+
+
+\[
+p(r) = p_0 - \frac{1}{2} \rho (\omega r \sqrt{1 + k^2})^2
+\]
+
+
+
+\subsection{Critical Angular Velocity}
+
+
+\[
+\omega_c(r) = \frac{1}{r \sqrt{1 + k^2}} \sqrt{\frac{2(p_0 - p_{vap})}{\rho}}
+\]
+
+
+
+\subsection{Critical Radius and Time}
+
+
+\[
+r_{crit} = \frac{1}{\omega \sqrt{1 + k^2}} \sqrt{\frac{2(p_0 - p_{vap})}{\rho}}, \quad
+t_{crit} = \frac{1}{k\omega} \ln\left(\frac{r_{crit}}{r_0}\right)
+\]
+
+
+
+\section{Rayleigh–Plesset Equation}
+
+
+\[
+\rho \left( R \ddot{R} + \frac{3}{2} \dot{R}^2 \right) = p_{vap} - p_\infty(t) - \frac{2\sigma}{R} - \frac{4\mu \dot{R}}{R}
+\]
+
+
+
+
+\[
+p_\infty(t) = p_0 - \frac{1}{2} \rho [\omega r(t) \sqrt{1 + k^2}]^2
+\]
+
+
+
+\section{Cavitation Number and Operating Window}
+
+
+\[
+\sigma_c(r) = \frac{p_0 - p_{vap}}{\frac{1}{2} \rho (\omega r \sqrt{1 + k^2})^2}
+\]
+
+
+
+\section{Python Simulation Framework}
+Modules:
+\begin{itemize}
+    \item \texttt{logarithmic\_spiral}
+    \item \texttt{spiral\_velocity}
+    \item \texttt{critical\_conditions}
+    \item \texttt{external\_pressure\_spiral}
+    \item \texttt{rayleigh\_plesset}
+    \item \texttt{run\_simulation}
+    \item \texttt{plot\_operating\_window}
+\end{itemize}
+
+\section{Parameter Sweep and Optimization}
+Optimization over \( \alpha \in [5^\circ, 80^\circ] \):
+\begin{itemize}
+    \item \( \alpha_{opt} \approx 18.7^\circ \)
+    \item \( \omega_{c,max} \approx 842 \) rad/s
+    \item \( k \approx 2.98 \)
+\end{itemize}
+
+\section{Machine Learning Acceleration}
+\begin{itemize}
+    \item Model: GradientBoostingRegressor
+    \item Dataset: 10,000 samples
+    \item Prediction time: < 1 ms
+    \item Accuracy: \( R^2 = 0.9997 \), MAE < 0.5 rad/s
+\end{itemize}
+
+\section{Validation and Experimental Proposal}
+\begin{tabular}{|l|l|l|}
+\hline
+Type & Method & Instrument \\
+\hline
+CFD & OpenFOAM + volute model & ANSYS Fluent \\
+Experimental & High-speed camera + PIV & Phantom v2512 \\
+Acoustic & Hydrophone in volute & Brüel \& Kjær \\
+\hline
+\end{tabular}
+
+\section{References}
+\begin{itemize}
+    \item Brennen, C. E. (2014). \textit{Cavitation and Bubble Dynamics}. Oxford University Press.
+    \item Franc, J. P., \& Michel, J. M. (2004). \textit{Fundamentals of Cavitation}. Springer.
+    \item Plesset, M. S., \& Prosperetti, A. (1977). \textit{Bubble dynamics and cavitation}. Annu. Rev. Fluid Mech.
+    \item SciPy Documentation: \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html}
+    \item GitHub: \url{https://github.com/laszlo/spiral-cavitation}
+\end{itemize}
+
+\end{document}
