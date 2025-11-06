@@ -44,3 +44,9 @@ If you use this work, please cite it using the `CITATION.cff` file or Zenodo DOI
 
 Laszlo Tatai – Independent researcher and system architect  
 Rábagyarmat, Hungary
+
+## Setup
+
+conda env create -f environment.yml
+conda activate spiral-cavitation
+jupyter lab
