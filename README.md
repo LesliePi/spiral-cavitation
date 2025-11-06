@@ -34,7 +34,7 @@ spiral-cavitation/
 
 ## License
 
-This project is licensed under the MIT License or CC-BY-4.0 (see LICENSE file).
+This project is licensed under the MIT License and CC-BY-4.0 (see LICENSE file).
 
 ## Citation
 
