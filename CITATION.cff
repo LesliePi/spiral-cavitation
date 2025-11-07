@@ -9,16 +9,3 @@ version: v1.0.2
 date-released: 2025-11-07
 version: 1.0.2
 repository-code: https://github.com/LesliePi/spiral-cavitation
-license: MIT AND CC-BY-4.0
-keywords:
-  - cavitation
-  - spiral geometry
-  - Rayleigh–Plesset
-  - fluid dynamics
-  - Python simulation
-  - machine learning
-  - optimization
-  - CFD
-  - Jupyter Notebook
-abstract: >
-  This repository provides a complete, reproducible framework for modeling cavitation dynamics along logarithmic spiral trajectories. It includes mathematical foundations, physical modeling, numerical simulation, parameter optimization, and machine learning acceleration. The project is designed for open scientific dissemination and integration with CFD and experimental validation workflows.
