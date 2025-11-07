@@ -5,9 +5,9 @@ authors:
   given-names: Laszlo
 orcid: https://orcid.org/0009-0007-5153-6306
 title:
-version: v1.0.0
-date-released: 2025-11-06
-version: 1.0.0
+version: v1.0.2
+date-released: 2025-11-07
+version: 1.0.2
 repository-code: https://github.com/LesliePi/spiral-cavitation
 license: MIT AND CC-BY-4.0
 keywords:
