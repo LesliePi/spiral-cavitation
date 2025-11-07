@@ -1,11 +1,9 @@
-cff-version: 1.1.1
+cff-version: 1.1.0
 message: "If you use this software, please cite it as below."
 authors:
 - family-names: Tatai
   given-names: Laszlo
 orcid: https://orcid.org/0009-0007-5153-6306
-title:
+title:"Spirals in Engineering: Spiral and Cavitation"
 version: v1.0.2
 date-released: 2025-11-07
-version: 1.0.2
-repository-code: https://github.com/LesliePi/spiral-cavitation
