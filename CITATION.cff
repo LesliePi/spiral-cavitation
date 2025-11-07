@@ -1,9 +1,10 @@
 cff-version: 1.1.0
-message: "If you use this software, please cite it as below."
-authors:
-- family-names: Tatai
-  given-names: Laszlo
-orcid: https://orcid.org/0009-0007-5153-6306
 title: "Spirals in Engineering: Spiral and Cavitation"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+- given-names: Laszlo
+  family-names: Tatai
+  orcid: https://orcid.org/0009-0007-5153-6306
 version: v1.0.4
 date-released:2025-11-07
