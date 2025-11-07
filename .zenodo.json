@@ -22,11 +22,11 @@
   ],
   "related_identifiers": [
     {
-      "identifier": "https://github.com/laszlo/spiral-cavitation",
+      "identifier": "https://github.com/LesliePi/spiral-cavitation",
       "relation": "isSupplementTo",
       "scheme": "url"
     }
   ],
-  "version": "1.0.0",
+  "version": "1.0.4",
   "language": "en"
 }
