@@ -1,0 +1,34 @@
+{
+  "title": "Logarithmic Spiral and Cavitation Modeling",
+  "upload_type": "software",
+  "description": "This repository provides a reproducible framework for modeling cavitation dynamics along logarithmic spiral trajectories. It includes mathematical foundations, physical modeling, numerical simulation, parameter optimization, and machine learning acceleration. Designed for open scientific dissemination and integration with CFD and experimental workflows.",
+  "creators": [
+    {
+      "name": "Tatai, Laszlo",
+      "orcid": "0009-0007-5153-6306",
+      "affiliation": "Independent researcher, Rábagyarmat, Hungary",
+    }
+  ],
+  "access_right": "open"
+  "license": "MIT",
+  "keywords": [
+    "cavitation",
+    "spiral geometry",
+    "Rayleigh–Plesset",
+    "fluid dynamics",
+    "Python",
+    "simulation",
+    "machine learning",
+    "CFD",
+    "open science"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/LesliePi/spiral-cavitation",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "version": "1.0.4",
+  "language": "en"
+}
